@@ -1,0 +1,16 @@
+{
+  "name": "Rythm Community",
+  "short_name": "Rythm",
+  "lang": "de-DE",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "theme_color": "hsl(0, 50, 50%)",
+  "background_color": "rgb(10, 10, 10)",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "512x512",
+      "type": "image\/png"
+    }
+  ]
+}

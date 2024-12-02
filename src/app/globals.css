@@ -2,20 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body,
+html {
+  height: 100dvh;
+  width: 100dvw;
+  margin: 0px;
+  padding: 0px;
+  @apply text-text;
+  @apply bg-background;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-family: Inter-Regular;
+  src: url("../assets/fonts/Inter_18pt-Regular.ttf");
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@font-face {
+  font-family: Inter-Bold;
+  src: url("../assets/fonts/Inter_18pt-Bold.ttf");
+}
+
+@font-face {
+  font-family: Inter-Italic;
+  src: url("../assets/fonts/Inter_18pt-Italic.ttf");
 }
