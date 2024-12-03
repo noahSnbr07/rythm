@@ -1,7 +1,6 @@
 "use client";
 
 import React, { Dispatch, SetStateAction, useState } from "react";
-import Song from "@/types/song";
 import APIResponseSongTemplate from "@/types/api-response-song-template";
 
 interface SongTemplateContextInterface {

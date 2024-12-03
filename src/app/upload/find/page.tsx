@@ -6,7 +6,7 @@ import HeaderInput from "./components/header-input";
 import APIResponseSongTemplate from "@/types/api-response-song-template";
 import TemplateList from "./components/template-list";
 
-export default function upload(): JSX.Element {
+export default function Upload(): JSX.Element {
   const [query, setQuery] = useState<string>("");
   const [templates, setTemplates] = useState<APIResponseSongTemplate[]>([]);
 

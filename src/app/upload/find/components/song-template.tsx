@@ -33,7 +33,7 @@ export default function SongTemplate({
         alt={`Cover of Template "${title}"`}
       />
       <div className="flex w-full flex-col truncate">
-        <p className="text-ll font-bold">{title}</p>{" "}
+        <p className="font-bold">{title}</p>{" "}
         <p className="font-italic text-sm text-muted">{artist}</p>
       </div>
     </button>

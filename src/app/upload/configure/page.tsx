@@ -5,7 +5,7 @@ import useSongTemplate from "../hooks/use-song-template.tsx";
 import CoverImage from "./components/cover-image";
 import CustomHeader from "./components/custom-header";
 
-export default function page() {
+export default function Page() {
   const { songTemplate } = useSongTemplate();
 
   return (

@@ -5,7 +5,7 @@ import React from "react";
 
 export default function page(): JSX.Element {
   return (
-    <div className="w-dvh flex h-dvh flex-col items-center justify-center gap-8">
+    <div className="flex h-dvh flex-col items-center justify-center gap-8">
       <Image
         src={icon}
         alt="Rythm Community Icon"

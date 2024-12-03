@@ -5,7 +5,6 @@ import React from "react";
 
 //define props of page container
 interface PageContainerProps {
-  hideHeader?: boolean;
   hideFooter?: boolean;
   hideLogo?: boolean;
   children: React.ReactNode; //content of page
@@ -14,7 +13,6 @@ interface PageContainerProps {
 }
 
 export default function PageContainer({
-  hideHeader = false,
   hideFooter = false,
   hideLogo = false,
   priorityClassName = "",
@@ -46,7 +44,7 @@ export default function PageContainer({
   ];
 
   return (
-    <div className="w-dvh flex h-dvh flex-col">
+    <div className="flex h-dvh flex-col">
       <header className="flex gap-2 bg-stack p-2">
         {!hideLogo && (
           <>
