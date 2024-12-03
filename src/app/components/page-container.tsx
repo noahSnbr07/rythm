@@ -5,14 +5,18 @@ import React from 'react'
 
 //define props of page container
 interface PageContainerProps {
-   navigationHidden?: boolean; //hide nav and header
+   hideHeader?: boolean;
+   hideFooter?: boolean;
    children: React.ReactNode; //content of page
    priorityClassName?: string; //overwrite default spacings
+   customHeaderJSX?: React.ReactNode;
 }
 
 export default function PageContainer({
-   navigationHidden = false,
+   hideHeader = false,
+   hideFooter = false,
    priorityClassName = "",
+   customHeaderJSX,
    children }: PageContainerProps): JSX.Element {
 
    interface NavigationLink {
@@ -39,8 +43,8 @@ export default function PageContainer({
 
    return (
       <div className='flex flex-col h-dvh w-dvh'>
-         {!navigationHidden && (
-            <header className='bg-stack flex gap-2 p-2'>
+         <header className='bg-stack flex gap-2 p-2'>
+            {!hideHeader ? (
                <Link href={'/'}>
                   <Image
                      src={icon}
@@ -48,16 +52,17 @@ export default function PageContainer({
                      width={32}
                      title='Logo'
                      alt='Logo'
+                     className=''
                   />
                </Link>
-            </header>
-         )}
+            ) : customHeaderJSX}
+         </header>
 
          {/* insert className overwrite */}
-         <main className={`flex-1 ${priorityClassName ? priorityClassName : ' p-4 gap-8'}`}>
+         <main className={`flex-1 overflow-y-scroll ${priorityClassName ? priorityClassName : ' p-4 gap-8'}`}>
             {children}
          </main>
-         {!navigationHidden && (
+         {!hideFooter && (
             <footer className='bg-stack'>
                <nav className='flex justify-evenly p-4'>
 

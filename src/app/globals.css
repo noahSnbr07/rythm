@@ -26,3 +26,12 @@ html {
   font-family: Inter-Italic;
   src: url("../assets/fonts/Inter_18pt-Italic.ttf");
 }
+
+
+input:focus {
+  outline: none;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
