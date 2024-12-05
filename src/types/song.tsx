@@ -1,5 +1,6 @@
 export default interface Song {
   id: string;
+  videoID: string;
   title: string;
   artist: string;
   explicit: boolean;
@@ -8,4 +9,6 @@ export default interface Song {
   duration: number;
   release: string;
   published: string;
+  views: number;
+  likes: number;
 }

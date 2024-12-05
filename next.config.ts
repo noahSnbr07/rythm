@@ -5,7 +5,7 @@ const nextConfig = {
   },
   env: {
     YOUTUBE_SEARCH_API_V3_KEY: process.env.YOUTUBE_SEARCH_API_V3_KEY,
-  }
+  },
 };
 
 module.exports = nextConfig;

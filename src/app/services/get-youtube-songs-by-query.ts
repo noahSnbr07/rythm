@@ -20,16 +20,16 @@ interface YouTubeAPISearchResponse {
   }[];
 }
 
-
 export default async function getYouTubeSongsByQuery(
   query: string,
 ): Promise<APIResponseSongTemplate[] | null> {
   const key: string = process.env.YOUTUBE_SEARCH_API_V3_KEY || "";
+
   const response: Response = await fetch(
     `https://www.googleapis.com/youtube/v3/search?q=${encodeURIComponent(query)}&part=snippet&maxResults=10&key=${key}`,
   );
 
-  if (response.ok) {
+  if (response && response.ok) {
     const data: YouTubeAPISearchResponse = await response.json();
 
     const templateSongs: APIResponseSongTemplate[] = data.items.map((song) => ({

@@ -10,10 +10,7 @@ export default function SongTemplate({
   template: APIResponseSongTemplate;
 }): JSX.Element {
   const { thumbnailURL, title, artist } = template;
-
-  const { songTemplate, setSongTemplate } = useSongTemplate();
-
-  console.log(songTemplate);
+  const { setSongTemplate } = useSongTemplate();
 
   function navigateToConfigurationPage() {
     setSongTemplate(template);
@@ -23,16 +20,16 @@ export default function SongTemplate({
   return (
     <button
       onClick={navigateToConfigurationPage}
-      className="flex flex-col gap-2 rounded-lg bg-stack p-2"
+      className="flex flex-col gap-4 rounded-lg bg-stack p-2"
     >
       <Image
         width={256}
         height={256}
         src={thumbnailURL || ""}
-        className="w-full rounded-md object-cover"
+        className="aspect-square w-full rounded-md object-cover"
         alt={`Cover of Template "${title}"`}
       />
-      <div className="flex w-full flex-col truncate">
+      <div className="flex w-full flex-col items-start truncate">
         <p className="font-bold">{title}</p>{" "}
         <p className="font-italic text-sm text-muted">{artist}</p>
       </div>
