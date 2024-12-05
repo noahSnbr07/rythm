@@ -2,6 +2,6 @@
 
 import Song from "@/types/song";
 
-export default function publishSong(song: Song) {
+export default async function publishSong(song: Song) {
   console.log(song);
 }
