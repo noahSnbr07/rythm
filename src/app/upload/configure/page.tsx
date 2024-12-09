@@ -16,7 +16,8 @@ export default function Page() {
   const [pending, setPending] = useState<boolean>(false);
 
   //return if missing videoID
-  if (!songTemplate?.videoID || songTemplate.videoID.length < 1) redirect("/upload/find");
+  if (!songTemplate?.videoID || songTemplate.videoID.length < 1)
+    redirect("/upload/find");
 
   const [newSong, setNewSong] = useState<Song>({
     id: "",
@@ -40,11 +41,9 @@ export default function Page() {
   return (
     <PageContainer
       priorityClassName="justify-between p-4 gap-4"
-      customHeaderJSX={<CustomHeader title={songTemplate?.title || ""} />}>
-
-      <CoverImage
-        song={newSong}
-      />
+      customHeaderJSX={<CustomHeader title={songTemplate?.title || ""} />}
+    >
+      <CoverImage song={newSong} />
 
       <SongCredentialsInputs
         allowEdit={allowEdit}
@@ -52,13 +51,7 @@ export default function Page() {
         setSong={setNewSong}
       />
 
-
-      <PublishButton
-        pending={pending}
-        setPending={setPending}
-        song={newSong}
-      />
-
+      <PublishButton pending={pending} setPending={setPending} song={newSong} />
     </PageContainer>
   );
 }

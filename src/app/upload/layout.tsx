@@ -1,4 +1,3 @@
-// app/upload/layout.tsx
 import React from "react";
 import SongTemplateContextProvider from "./context/song-template-context";
 

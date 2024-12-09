@@ -10,10 +10,12 @@ interface PublishButtonProps {
   setPending: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function PublishButton({ song, setPending, pending }: PublishButtonProps) {
-
+export default function PublishButton({
+  song,
+  setPending,
+  pending,
+}: PublishButtonProps) {
   async function attemptUpload(): Promise<void> {
-
     //prevent flooding requests
     setPending(true);
 
@@ -36,7 +38,7 @@ export default function PublishButton({ song, setPending, pending }: PublishButt
       onClick={attemptUpload}
       className="w-full rounded-lg bg-accent p-4 font-bold text-xl"
     >
-      {pending ? 'loading ...' : 'Publish'}
+      {pending ? "loading ..." : "Publish"}
     </button>
   );
 }
