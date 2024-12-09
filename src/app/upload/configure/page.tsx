@@ -57,7 +57,6 @@ export default function Page() {
         pending={pending}
         setPending={setPending}
         song={newSong}
-        setSong={setNewSong}
       />
 
     </PageContainer>
