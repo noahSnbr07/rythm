@@ -16,21 +16,19 @@ export default function PublishButton({
   pending,
 }: PublishButtonProps) {
   async function attemptUpload(): Promise<void> {
-    //prevent flooding requests
     setPending(true);
+    try {
+      const newSong = await getYouTubeMetaData(song.videoID);
+      if (!newSong) redirect("/upload/find");
 
-    //construct new song from api response
-    const newSong = await getYouTubeMetaData(song.videoID);
-
-    //early return if invalid response
-    if (!newSong) redirect("/upload/find");
-
-    //upload raw blob
-    await publishSong(newSong as Song);
-
-    //end
-    setPending(false);
-    redirect(`/upload/verify/`);
+      await publishSong(newSong as Song);
+      redirect(`/upload/verify/`);
+    } catch (error) {
+      console.error("Error during upload:", error);
+      alert("An error occurred during upload. Please try again.");
+    } finally {
+      setPending(false);
+    }
   }
 
   return (
