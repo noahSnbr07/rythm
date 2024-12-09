@@ -1,5 +1,12 @@
-import React from "react";
+"use client";
+
+import PageContainer from "@/app/components/page-container";
 
 export default function page() {
-  return <div>page</div>;
+
+
+
+  <PageContainer>
+    h
+  </PageContainer>
 }

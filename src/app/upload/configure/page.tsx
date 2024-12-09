@@ -4,22 +4,23 @@ import PageContainer from "@/app/components/page-container";
 import useSongTemplate from "../hooks/use-song-template.tsx";
 import CoverImage from "./components/cover-image";
 import CustomHeader from "./components/custom-header";
-import GetSongButton from "./components/get-song-button";
 import { useEffect, useState } from "react";
 import Song from "@/types/song";
 import SongCredentialsInputs from "./components/song-credentials-inputs";
-import usePending from "../hooks/use-pending";
 import PublishButton from "./components/publish-button";
+import { redirect } from "next/navigation.js";
 
 export default function Page() {
   const { songTemplate } = useSongTemplate();
   const [allowEdit] = useState<boolean>(false);
-  const [pending, togglePending] = usePending();
-  const [preloaded, setPreloaded] = useState<boolean>(false);
+  const [pending, setPending] = useState<boolean>(false);
+
+  //return if missing videoID
+  if (!songTemplate?.videoID || songTemplate.videoID.length < 1) redirect("/upload/find");
 
   const [newSong, setNewSong] = useState<Song>({
     id: "",
-    videoID: "",
+    videoID: songTemplate?.videoID || "",
     title: songTemplate?.title || "",
     artist: songTemplate?.artist || "",
     explicit: false,
@@ -39,9 +40,11 @@ export default function Page() {
   return (
     <PageContainer
       priorityClassName="justify-between p-4 gap-4"
-      customHeaderJSX={<CustomHeader title={songTemplate?.title || ""} />}
-    >
-      <CoverImage src={songTemplate?.thumbnailURL || ""} />
+      customHeaderJSX={<CustomHeader title={songTemplate?.title || ""} />}>
+
+      <CoverImage
+        song={newSong}
+      />
 
       <SongCredentialsInputs
         allowEdit={allowEdit}
@@ -49,16 +52,14 @@ export default function Page() {
         setSong={setNewSong}
       />
 
-      <GetSongButton
-        preloaded={preloaded}
-        setPreloaded={setPreloaded}
+
+      <PublishButton
         pending={pending}
-        togglePending={togglePending}
-        videoID={songTemplate?.videoID || ""}
+        setPending={setPending}
+        song={newSong}
         setSong={setNewSong}
       />
 
-      <PublishButton song={newSong} />
     </PageContainer>
   );
 }

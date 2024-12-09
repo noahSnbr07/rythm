@@ -2,6 +2,7 @@
 
 import APIResponseSongTemplate from "@/types/api-response-song-template";
 
+//construct object structure for api response
 interface YouTubeAPISearchResponse {
   items: {
     id: {
@@ -25,13 +26,16 @@ export default async function getYouTubeSongsByQuery(
 ): Promise<APIResponseSongTemplate[] | null> {
   const key: string = process.env.YOUTUBE_SEARCH_API_V3_KEY || "";
 
+  //query api
   const response: Response = await fetch(
     `https://www.googleapis.com/youtube/v3/search?q=${encodeURIComponent(query)}&part=snippet&maxResults=10&key=${key}`,
   );
 
+  //validate response
   if (response && response.ok) {
     const data: YouTubeAPISearchResponse = await response.json();
 
+    //construct possible matches
     const templateSongs: APIResponseSongTemplate[] = data.items.map((song) => ({
       videoID: song.id.videoId,
       artist: song.snippet.channelTitle,

@@ -18,9 +18,9 @@ export default function HeaderInput({
   const fetchEntries = async () => {
     setValue("");
     const res = await getYouTubeSongsByQuery(value);
-    if (res) {
-      setTemplateSongs(res);
-    } else console.error("an error occurred fetching templates");
+    if (!res || res.length < 0) console.error("an error occurred fetching templates");
+
+    else setTemplateSongs(res);
   };
 
   return (
