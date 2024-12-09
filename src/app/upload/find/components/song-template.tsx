@@ -9,7 +9,7 @@ export default function SongTemplate({
 }: {
   template: APIResponseSongTemplate;
 }): JSX.Element {
-  const { thumbnailURL, title, artist, videoID } = template;
+  const { thumbnailURL, title, artist } = template;
   const { setSongTemplate } = useSongTemplate();
 
   function navigateToConfigurationPage() {

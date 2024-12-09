@@ -6,12 +6,11 @@ import React, { Dispatch, SetStateAction } from "react";
 
 interface PublishButtonProps {
   song: Song;
-  setSong: Dispatch<SetStateAction<Song>>;
   pending: boolean;
   setPending: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function PublishButton({ song, setSong, setPending, pending }: PublishButtonProps) {
+export default function PublishButton({ song, setPending, pending }: PublishButtonProps) {
 
   async function attemptUpload(): Promise<void> {
 
@@ -25,7 +24,7 @@ export default function PublishButton({ song, setSong, setPending, pending }: Pu
     if (!newSong) redirect("/upload/find");
 
     //upload raw blob
-    const fileURL: string = await publishSong(newSong as Song);
+    await publishSong(newSong as Song);
 
     //end
     setPending(false);
