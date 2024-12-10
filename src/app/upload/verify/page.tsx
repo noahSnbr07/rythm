@@ -10,7 +10,7 @@ export default function Page() {
 
   return (
     <PageContainer>
-      <p className="text- xl font-bold">
+      <p className="text-xl font-bold">
         {successfulUpload ? 'Success' : 'Failure'}
       </p>
 
