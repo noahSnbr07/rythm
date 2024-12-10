@@ -15,7 +15,7 @@ export default async function publishSong(song: Song): Promise<string> {
 
 
     const raw: Blob = await response.blob();
-    console.log(raw.size)
+    console.log(raw.size);
 
     const fileName: string = `${song.title
       .replace(/[^\w\s-]/g, "")
