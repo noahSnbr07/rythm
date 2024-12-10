@@ -1,8 +1,9 @@
 "use server";
 
+import Song from "@/types/song";
 import getYouTubeDownloadURL from "./get-youtube-download-url";
 
-export default async function getYouTubeMetaData(videoID: string) {
+export default async function getYouTubeMetaData(videoID: string): Promise<Song> {
   if (!videoID) throw new Error("videoID parameter missing");
 
   const apiKey = process.env.YOUTUBE_SEARCH_API_V3_KEY;
@@ -35,6 +36,7 @@ export default async function getYouTubeMetaData(videoID: string) {
       id: result.etag,
       videoID: result.id,
       title: snippet.title,
+      explicit: false,
       audioURL: downloadURL,
       bannerURL: thumbnail,
       artist: snippet.channelTitle,

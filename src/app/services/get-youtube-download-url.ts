@@ -14,7 +14,7 @@ export default async function getYouTubeDownloadURL(
     },
   };
 
-  console.log("videID: ", videoID);
+  console.log(`[videID]: ${videoID}`);
 
   try {
     const response = await fetch(url, options);

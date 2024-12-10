@@ -17,18 +17,16 @@ export default function PublishButton({
 }: PublishButtonProps) {
   async function attemptUpload(): Promise<void> {
     setPending(true);
-    try {
-      const newSong = await getYouTubeMetaData(song.videoID);
-      if (!newSong) redirect("/upload/find");
 
-      await publishSong(newSong as Song);
-      redirect(`/upload/verify/`);
-    } catch (error) {
-      console.error("Error during upload:", error);
-      alert("An error occurred during upload. Please try again.");
-    } finally {
-      setPending(false);
-    }
+    const newSong = await getYouTubeMetaData(song.videoID);
+    console.log(newSong)
+
+    //exit if un scraped song
+    if (!newSong) redirect("/upload/find");
+
+    await publishSong(newSong);
+    setPending(false);
+    redirect("/upload/verify");
   }
 
   return (
