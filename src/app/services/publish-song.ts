@@ -1,4 +1,4 @@
-"use server";
+"use client";
 
 import { put } from "@vercel/blob";
 import Song from "@/types/song";
@@ -15,18 +15,18 @@ export default async function publishSong(song: Song): Promise<string> {
 
 
     const raw: Blob = await response.blob();
+    console.log(raw.size)
 
-    const fileName = `${song.title
+    const fileName: string = `${song.title
       .replace(/[^\w\s-]/g, "")
       .replace(/\s+/g, "-")
       .toLowerCase()}-${Date.now()}.mp3`.trim();
 
-    const uploadedFile = await put(fileName, raw, { access: "public" });
-    console.log("Uploaded file URL:", uploadedFile.url);
+    await put(fileName, raw, { access: "public" });
 
     return fileName;
   } catch (error) {
-    console.error(`Error publishing song "${song.title}":`, error);
+    console.error(`Error publishing song:`, error);
     throw error;
   }
 }

@@ -8,7 +8,7 @@ interface SongCredentialsInputsProps {
 }
 
 export default function SongCredentialsInputs({
-  // allowEdit,
+  // allowEdit
   song,
   setSong,
 }: SongCredentialsInputsProps) {
