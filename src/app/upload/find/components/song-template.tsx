@@ -20,13 +20,13 @@ export default function SongTemplate({
   return (
     <button
       onClick={navigateToConfigurationPage}
-      className="flex flex-col gap-4 rounded-lg bg-stack p-2"
+      className="flex gap-2 w-full rounded-lg bg-stack p-2 border-2 border-transparent focus:border-accent transition-all"
     >
       <Image
-        width={256}
-        height={256}
-        src={thumbnailURL || ""}
-        className="aspect-square w-full rounded-md object-cover"
+        width={64}
+        height={64}
+        src={thumbnailURL}
+        className="aspect-square rounded-md object-cover"
         alt={`Cover of Template "${title}"`}
       />
       <div className="flex w-full flex-col items-start truncate">

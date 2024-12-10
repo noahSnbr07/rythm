@@ -34,3 +34,8 @@ input:focus {
 ::-webkit-scrollbar {
   width: 0;
 }
+
+button:active {
+  transition: 250ms ease-out;
+  opacity: .5;
+}

@@ -12,7 +12,7 @@ export default function Upload(): JSX.Element {
 
   return (
     <PageContainer
-      priorityClassName="p-4 grid gap-4 grid-cols-2"
+      priorityClassName="p-4 flex flex-col gap-2"
       hideLogo
       customHeaderJSX={
         <HeaderInput

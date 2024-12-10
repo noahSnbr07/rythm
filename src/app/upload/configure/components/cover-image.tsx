@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function CoverImage({ song }: { song: Song }) {
   return (
     <div className="flex gap-4">
-      <audio src={song.audioURL || ""} />
+      <audio src={song.audioURL} />
       <Image
         className="aspect-square rounded-xl object-cover"
         src={song.bannerURL}
