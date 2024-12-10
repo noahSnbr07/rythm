@@ -4,7 +4,7 @@ import PageContainer from "@/app/components/page-container";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
-export default function page() {
+export default function Page() {
   const searchParams = useSearchParams();
   const successfulUpload = searchParams.get("success");
 
