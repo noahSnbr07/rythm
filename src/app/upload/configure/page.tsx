@@ -34,10 +34,6 @@ export default function Page() {
     likes: 0,
   });
 
-  useEffect(() => {
-    console.log(newSong);
-  }, [newSong]);
-
   return (
     <PageContainer
       priorityClassName="justify-between p-4 gap-4"

@@ -8,7 +8,7 @@ export default async function SongLink({ song }: { song: Song }) {
    return (
       <div className='flex flex-col gap-2 w-[128px] rounded-md hover:bg-stack transition-all p-2'>
          <Image
-            className='rounded-md bg-stack aspect-square'
+            className='rounded-md bg-stack aspect-square object-cover'
             src={song.bannerURL}
             height={128}
             width={128}

@@ -1,15 +1,16 @@
 "use client";
 
-import { put } from "@vercel/blob";
+import { PutBlobResult, put } from "@vercel/blob";
 import Song from "@/types/song";
 import supabase from "../supabase/supabase";
 import parseDuration from "../functions/parse-duration";
 import { v4 } from "uuid";
+import { debug } from "@/tools/logger";
 
 export default async function publishSong(song: Song): Promise<string> {
   try {
     // Validate the audio URL
-    if (!song.audioURL.includes("http"))
+    if (!song.audioURL || song.audioURL.length < 1)
       throw new Error("Invalid audioURL format.");
 
     console.log("Fetching audio file from:", song.audioURL);
@@ -19,7 +20,6 @@ export default async function publishSong(song: Song): Promise<string> {
 
     // Fetch raw mp3 file from external source
     const raw: Blob = await response.blob();
-    console.log("File size:", raw.size);
 
     // Construct file name
     const fileName: string = `${song.title
@@ -28,7 +28,7 @@ export default async function publishSong(song: Song): Promise<string> {
       .toLowerCase()}-${Date.now()}.mp3`.trim();
 
     // Upload file to cloud storage
-    const uploadResult = await put(fileName, raw, { access: "public" });
+    const uploadResult: PutBlobResult = await put(fileName, raw, { access: "public" });
     console.log(uploadResult);
 
     const now = new Date().toISOString().slice(0, 19).replace('T', ' ');

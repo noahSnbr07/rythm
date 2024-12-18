@@ -22,12 +22,11 @@ export default function PublishButton({
     let successful: boolean = true;
     try {
       const newSong = await getYouTubeMetaData(song.videoID);
-      setSong(newSong);
 
       //exit if un scraped song
       if (!newSong) redirect("/upload/find");
 
-      await publishSong(song);
+      await publishSong(newSong);
 
       successful = true;
     } catch (error) {
