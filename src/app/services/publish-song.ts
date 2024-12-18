@@ -9,7 +9,7 @@ import { v4 } from "uuid";
 export default async function publishSong(song: Song): Promise<string> {
   try {
     // Validate the audio URL
-    if (!song.audioURL.startsWith("http" || "https"))
+    if (!song.audioURL.includes("http"))
       throw new Error("Invalid audioURL format.");
 
     console.log("Fetching audio file from:", song.audioURL);
