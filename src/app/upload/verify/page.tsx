@@ -3,13 +3,14 @@
 import PageContainer from "@/app/components/page-container";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function Page() {
+function VerifyPageContent() {
   const searchParams = useSearchParams();
   const successfulUpload = searchParams.get("success");
 
   return (
-    <PageContainer>
+    <>
       <p className="font-bold text-xl">
         {successfulUpload ? "Success" : "Failure"}
       </p>
@@ -20,6 +21,16 @@ export default function Page() {
       >
         Take me back
       </Link>
+    </>
+  );
+}
+
+export default function page() {
+  return (
+    <PageContainer>
+      <Suspense fallback={<p>Loading...</p>}>
+        <VerifyPageContent />
+      </Suspense>
     </PageContainer>
   );
 }
