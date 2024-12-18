@@ -31,18 +31,19 @@ export default async function publishSong(song: Song): Promise<string> {
     const uploadResult = await put(fileName, raw, { access: "public" });
     console.log(uploadResult);
 
-    const now = Date.now();
+    const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
+
 
     // Insert the song into Supabase
     const { data, error } = await supabase.from("songs").insert({
       id: v4(), // Generate a valid UUID
       title: song.title,
       published: now,
-      audioURL: song.audioURL,
+      audio_url: song.audioURL,
       artist: song.artist,
-      videoID: song.videoID,
+      video_id: song.videoID,
       explicit: song.explicit,
-      bannerURL: song.bannerURL,
+      banner_url: song.bannerURL,
       duration: parseDuration(String(song.duration)) || "",
       release: song.release,
       views: song.views,
