@@ -4,7 +4,7 @@ import PageContainer from "@/app/components/page-container";
 import useSongTemplate from "../hooks/use-song-template.tsx";
 import CoverImage from "./components/cover-image";
 import CustomHeader from "./components/custom-header";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Song from "@/types/song";
 import SongCredentialsInputs from "./components/song-credentials-inputs";
 import PublishButton from "./components/publish-button";
@@ -50,8 +50,7 @@ export default function Page() {
       <PublishButton
         pending={pending}
         setPending={setPending}
-        song={newSong}
-        setSong={setNewSong} />
+        song={newSong} />
     </PageContainer>
   );
 }

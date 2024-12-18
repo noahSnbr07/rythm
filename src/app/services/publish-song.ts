@@ -5,7 +5,6 @@ import Song from "@/types/song";
 import supabase from "../supabase/supabase";
 import parseDuration from "../functions/parse-duration";
 import { v4 } from "uuid";
-import { debug } from "@/tools/logger";
 
 export default async function publishSong(song: Song): Promise<string> {
   try {

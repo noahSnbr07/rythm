@@ -6,14 +6,12 @@ import React, { Dispatch, SetStateAction } from "react";
 
 interface PublishButtonProps {
   song: Song;
-  setSong: Dispatch<SetStateAction<Song>>;
   pending: boolean;
   setPending: Dispatch<SetStateAction<boolean>>;
 }
 
 export default function PublishButton({
   song,
-  setSong,
   setPending,
   pending,
 }: PublishButtonProps) {
