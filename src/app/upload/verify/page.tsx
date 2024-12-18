@@ -3,6 +3,7 @@
 import PageContainer from "@/app/components/page-container";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 export default function Page() {
   const searchParams = useSearchParams();
@@ -10,15 +11,18 @@ export default function Page() {
 
   return (
     <PageContainer>
-      <p className="text-xl font-bold">
-        {successfulUpload ? 'Success' : 'Failure'}
+      <p className="font-bold text-xl">
+        <Suspense fallback={` loading ...`}>
+          {successfulUpload ? "Success" : "Failure"}
+        </Suspense>
       </p>
 
       <Link
-        className="font-italic px-8 py-4 bg-stack rounded-lg text-muted"
-        href={"/upload/find"}>
+        className="rounded-lg bg-stack px-8 py-4 font-italic text-muted"
+        href={"/upload/find"}
+      >
         Take me back
       </Link>
     </PageContainer>
-  )
+  );
 }

@@ -17,11 +17,10 @@ export default function PublishButton({
 }: PublishButtonProps) {
   async function attemptUpload(): Promise<void> {
     setPending(true);
-    let successful: boolean = false;
+    let successful: boolean = true;
     try {
-
       const newSong = await getYouTubeMetaData(song.videoID);
-      console.log(newSong)
+      console.log(newSong);
 
       //exit if un scraped song
       if (!newSong) redirect("/upload/find");
@@ -33,13 +32,10 @@ export default function PublishButton({
       if (error instanceof Error) {
         if (error) successful = false;
       }
-    }
-
-    finally {
+    } finally {
       setPending(false);
       redirect(`/upload/verify?success=${String(successful)}`);
     }
-
   }
 
   return (

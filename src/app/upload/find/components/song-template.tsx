@@ -20,7 +20,7 @@ export default function SongTemplate({
   return (
     <button
       onClick={navigateToConfigurationPage}
-      className="flex gap-2 w-full rounded-lg bg-stack p-2 border-2 border-transparent focus:border-accent transition-all"
+      className="flex w-full gap-2 rounded-lg border-2 border-transparent bg-stack p-2 transition-all focus:border-accent"
     >
       <Image
         width={64}
@@ -30,7 +30,7 @@ export default function SongTemplate({
         alt={`Cover of Template "${title}"`}
       />
       <div className="flex w-full flex-col items-start truncate">
-        <p className="font-bold">{title}</p>{" "}
+        <p className="font-bold">{title}</p>
         <p className="font-italic text-sm text-muted">{artist}</p>
       </div>
     </button>
