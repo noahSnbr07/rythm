@@ -3,7 +3,6 @@
 import PageContainer from "@/app/components/page-container";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
 
 export default function Page() {
   const searchParams = useSearchParams();
@@ -12,9 +11,7 @@ export default function Page() {
   return (
     <PageContainer>
       <p className="font-bold text-xl">
-        <Suspense fallback={` loading ...`}>
-          {successfulUpload ? "Success" : "Failure"}
-        </Suspense>
+        {successfulUpload ? "Success" : "Failure"}
       </p>
 
       <Link
