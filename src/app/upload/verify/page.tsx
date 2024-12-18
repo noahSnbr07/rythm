@@ -7,7 +7,7 @@ import { Suspense } from "react";
 
 function VerifyPageContent() {
   const searchParams = useSearchParams();
-  const successfulUpload = searchParams.get("success");
+  const successfulUpload = searchParams.get("success") === "true";
 
   return (
     <>

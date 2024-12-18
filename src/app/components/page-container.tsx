@@ -74,7 +74,7 @@ export default function PageContainer({
             {/* render all links */}
             {navigationLinks.map((link: NavigationLink) => {
               return (
-                <Link key={link.key} href={link.label}>
+                <Link key={link.key} href={`/${link.label}`}>
                   <Image
                     className="opacity-50"
                     src={link.icon}

@@ -6,12 +6,14 @@ import React, { Dispatch, SetStateAction } from "react";
 
 interface PublishButtonProps {
   song: Song;
+  setSong: Dispatch<SetStateAction<Song>>;
   pending: boolean;
   setPending: Dispatch<SetStateAction<boolean>>;
 }
 
 export default function PublishButton({
   song,
+  setSong,
   setPending,
   pending,
 }: PublishButtonProps) {
@@ -20,12 +22,12 @@ export default function PublishButton({
     let successful: boolean = true;
     try {
       const newSong = await getYouTubeMetaData(song.videoID);
-      console.log(newSong);
+      setSong(newSong);
 
       //exit if un scraped song
       if (!newSong) redirect("/upload/find");
 
-      await publishSong(newSong);
+      await publishSong(song);
 
       successful = true;
     } catch (error) {
