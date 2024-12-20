@@ -27,11 +27,12 @@ export default async function publishSong(song: Song): Promise<string> {
       .toLowerCase()}-${Date.now()}.mp3`.trim();
 
     // Upload file to cloud storage
-    const uploadResult: PutBlobResult = await put(fileName, raw, { access: "public" });
+    const uploadResult: PutBlobResult = await put(fileName, raw, {
+      access: "public",
+    });
     console.log(uploadResult);
 
-    const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
-
+    const now = new Date().toISOString().slice(0, 19).replace("T", " ");
 
     // Insert the song into Supabase
     const { data, error } = await supabase.from("songs").insert({

@@ -10,14 +10,16 @@
     "format": "npx prettier --write ."
   },
   "dependencies": {
+    "@dominate-color.js/core": "^1.1.1",
     "@google-cloud/storage": "^7.14.0",
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.47.6",
     "@vercel/blob": "^0.27.0",
     "@vercel/edge-config": "^1.4.0",
     "eslint-config-prettier": "^9.1.0",
-    "ioredis": "^5.4.1",
+    "fast-average-color": "^9.4.0",
     "next": "15.0.3",
+    "node-vibrant": "^4.0.0-alpha.5",
     "postgres": "^3.4.5",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",

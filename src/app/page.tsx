@@ -7,6 +7,7 @@ export default function page(): JSX.Element {
   return (
     <div className="flex h-dvh flex-col items-center justify-center gap-8">
       <Image
+        priority
         src={icon}
         alt="Rythm Community Icon"
         title="Icon"

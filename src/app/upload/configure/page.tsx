@@ -47,10 +47,7 @@ export default function Page() {
         setSong={setNewSong}
       />
 
-      <PublishButton
-        pending={pending}
-        setPending={setPending}
-        song={newSong} />
+      <PublishButton pending={pending} setPending={setPending} song={newSong} />
     </PageContainer>
   );
 }

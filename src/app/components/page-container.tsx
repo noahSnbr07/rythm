@@ -1,10 +1,11 @@
 import { details, home, icon, library } from "@/assets/assets";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { CSSProperties } from "react";
 
 //define props of page container
 interface PageContainerProps {
+  customCSS?: CSSProperties;
   hideFooter?: boolean;
   hideLogo?: boolean;
   children: React.ReactNode; //content of page
@@ -13,6 +14,7 @@ interface PageContainerProps {
 }
 
 export default function PageContainer({
+  customCSS,
   hideFooter = false,
   hideLogo = false,
   priorityClassName = "",
@@ -44,7 +46,7 @@ export default function PageContainer({
   ];
 
   return (
-    <div className="flex h-dvh flex-col">
+    <div style={customCSS} className="flex h-dvh flex-col">
       <header className="flex gap-2 bg-stack p-2">
         {!hideLogo && (
           <>
