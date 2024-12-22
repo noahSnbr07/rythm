@@ -2,8 +2,8 @@
 
 import { PutBlobResult, put } from "@vercel/blob";
 import Song from "@/types/song";
-import supabase from "../supabase/supabase";
-import parseDuration from "../functions/parse-duration";
+import supabase from "../../supabase/supabase";
+import parseDuration from "../../functions/parse-duration";
 import { v4 } from "uuid";
 
 export default async function publishSong(song: Song): Promise<string> {

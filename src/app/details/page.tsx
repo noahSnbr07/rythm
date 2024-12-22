@@ -8,6 +8,7 @@ import SongAssigner from "./components/song-assigner";
 import Cover from "./components/cover";
 import useEnviroment from "../hooks/use-enviroment";
 import ColorAssigner from "./components/color-assigner";
+import Header from "./components/header";
 
 const ActualPage = () => {
   const searchParams = useSearchParams();
@@ -17,21 +18,28 @@ const ActualPage = () => {
   const { color, setColor } = useEnviroment();
 
   return (
-    <PageContainer customCSS={{ background: color }} hideFooter>
+    <PageContainer
+      priorityClassName="p-0"
+      customCSS={{ background: color, }}
+      hideOuter>
+      <Header title={song.title} />
+
       {/* fetch song and assign it to global app context */}
       <SongAssigner id={id || ""} setSong={setSong} />
 
       {/* use ssr+fs to download, analyze and predict dominant color */}
       <ColorAssigner url={song.bannerURL} setColor={setColor} />
 
-      <Cover src={song.bannerURL} />
+      <div className="flex h-full w-full flex-col gap-4 p-4">
+        <Cover src={song.bannerURL} />
+      </div>
     </PageContainer>
   );
 };
 
 export default function Page() {
   return (
-    <Suspense fallback={<p>Loading...</p>}>
+    <Suspense fallback={<PageContainer hideOuter> <p> loading ... </p>  </PageContainer>}>
       <ActualPage />
     </Suspense>
   );

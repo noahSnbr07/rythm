@@ -17,6 +17,8 @@ export default function SongTemplate({
     redirect(`/upload/configure/`);
   }
 
+  if (!thumbnailURL || thumbnailURL.length < 1) return <></>;
+
   return (
     <button
       onClick={navigateToConfigurationPage}

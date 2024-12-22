@@ -6,20 +6,18 @@ import React, { CSSProperties } from "react";
 //define props of page container
 interface PageContainerProps {
   customCSS?: CSSProperties;
-  hideFooter?: boolean;
-  hideLogo?: boolean;
   children: React.ReactNode; //content of page
   priorityClassName?: string; //overwrite default spacings
   customHeaderJSX?: React.ReactNode;
+  hideOuter?: boolean;
 }
 
 export default function PageContainer({
   customCSS,
-  hideFooter = false,
-  hideLogo = false,
   priorityClassName = "",
   customHeaderJSX,
   children,
+  hideOuter = false,
 }: PageContainerProps): JSX.Element {
   interface NavigationLink {
     key: number;
@@ -46,9 +44,9 @@ export default function PageContainer({
   ];
 
   return (
-    <div style={customCSS} className="flex h-dvh flex-col transition-all">
-      <header className="flex gap-2 bg-stack p-2">
-        {!hideLogo && (
+    <div style={customCSS} className="flex h-dvh flex-col transition-all duration-1000">
+      {!hideOuter && (
+        <header className="flex gap-2 bg-stack p-2">
           <>
             <Link href={"/"}>
               <Image
@@ -57,12 +55,13 @@ export default function PageContainer({
                 width={32}
                 title="Logo"
                 alt="Logo"
+                className="h-full"
               />
             </Link>
           </>
-        )}
-        {customHeaderJSX}
-      </header>
+          {customHeaderJSX}
+        </header>
+      )}
 
       {/* insert className overwrite */}
       <main
@@ -70,7 +69,8 @@ export default function PageContainer({
       >
         {children}
       </main>
-      {!hideFooter && (
+
+      {!hideOuter && (
         <footer className="bg-stack">
           <nav className="flex justify-evenly p-4">
             {/* render all links */}

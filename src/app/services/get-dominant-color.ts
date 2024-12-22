@@ -11,20 +11,25 @@ const __dirname = path.dirname(__filename);
 
 export async function getDominantColor(url: string): Promise<string | null> {
   try {
+
+    const fetchPath: string = `${url}`
     // Fetch the image and save it locally
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/${url}`);
+    const response = await fetch(fetchPath);
+
+    console.log(`path: ${fetchPath}`);
+
     const buffer = await response.arrayBuffer();
     const tempFilePath = path.join(__dirname, "temp-image.jpg");
-    await fs.writeFile(tempFilePath, Buffer.from(buffer)); // Save the image locally
+    await fs.writeFile(tempFilePath, Buffer.from(buffer));
 
-    // Use `get-image-colors` to get the dominant colors
     const colors = await getColors(tempFilePath);
-    const dominantColor = colors[0].hex(); // Get the first (dominant) color
+    const dominantColor = colors[0].hex("rgb");
+
 
     // Cleanup the temp file
     await fs.unlink(tempFilePath);
 
-    console.log(dominantColor);
+    console.log(`#################### \ndominantColor: ${dominantColor} \n####################`);
     return dominantColor;
   } catch (error) {
     console.error("Error:", error);

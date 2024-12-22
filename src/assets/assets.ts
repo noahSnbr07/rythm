@@ -3,5 +3,7 @@ import home from "../assets/svg/home.svg";
 import details from "../assets/svg/details.svg";
 import library from "../assets/svg/library.svg";
 import search from "../assets/svg/search.svg";
+import back from "../assets/svg/back.svg";
+import more from "../assets/svg/more.svg";
 
-export { icon, home, details, library, search };
+export { icon, home, details, library, search, back, more };

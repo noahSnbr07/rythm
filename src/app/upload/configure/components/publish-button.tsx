@@ -1,5 +1,5 @@
 import getYouTubeMetaData from "@/app/services/get-youtube-meta-data";
-import publishSong from "@/app/services/publish-song";
+import publishSong from "@/app/services/database/publish-song";
 import Song from "@/types/song";
 import { redirect } from "next/navigation";
 import React, { Dispatch, SetStateAction } from "react";
