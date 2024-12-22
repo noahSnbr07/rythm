@@ -4,11 +4,9 @@ import React, { Dispatch, SetStateAction } from "react";
 
 export default function SongAssigner({
   id,
-  song,
   setSong,
 }: {
   id: string;
-  song: Song;
   setSong: Dispatch<SetStateAction<Song>>;
 }) {
   React.useEffect(
@@ -23,7 +21,7 @@ export default function SongAssigner({
 
       fetchSong();
     },
-    [id] as any[],
+    [id, setSong],
   );
 
   return <></>;

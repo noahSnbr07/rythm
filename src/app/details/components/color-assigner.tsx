@@ -20,7 +20,7 @@ export default function ColorAssigner({
 
       setDominantColor();
     },
-    [url] as any[],
+    [url, setColor],
   );
 
   return <></>;
