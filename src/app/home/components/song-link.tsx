@@ -20,7 +20,7 @@ export default async function SongLink({ song }: { song: Song }) {
         title={`${song.title} Banner`}
       />
       <div className="flex w-full flex-col truncate">
-        <p className="text-sm truncate font-bold"> {song.title} </p>
+        <p className="truncate font-bold text-sm"> {song.title} </p>
         <p className="truncate font-italic text-sm text-muted">
           {" "}
           {song.artist}{" "}

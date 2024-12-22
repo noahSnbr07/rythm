@@ -1,3 +1,5 @@
+import EnviromentContextProvider from "./context/enviroment-context";
+import SongContextProvider from "./context/song-context";
 import "./globals.css";
 
 export default function RootLayout({
@@ -7,7 +9,11 @@ export default function RootLayout({
 }>) {
   return (
     <html translate="no" lang="en">
-      <body>{children}</body>
+      <body>
+        <SongContextProvider>
+          <EnviromentContextProvider>{children}</EnviromentContextProvider>
+        </SongContextProvider>
+      </body>
     </html>
   );
 }
