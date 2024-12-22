@@ -12,7 +12,7 @@ const __dirname = path.dirname(__filename);
 export async function getDominantColor(url: string): Promise<string | null> {
   try {
     // Fetch the image and save it locally
-    const response = await fetch(url);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/${url}`);
     const buffer = await response.arrayBuffer();
     const tempFilePath = path.join(__dirname, "temp-image.jpg");
     await fs.writeFile(tempFilePath, Buffer.from(buffer)); // Save the image locally
