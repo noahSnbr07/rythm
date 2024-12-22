@@ -30,7 +30,7 @@ const ActualPage = () => {
       {/* use ssr+fs to download, analyze and predict dominant color */}
       <ColorAssigner url={song.bannerURL} setColor={setColor} />
 
-      <div className="flex h-full w-full flex-col gap-4 p-4">
+      <div className="flex size-full flex-col gap-4 p-4">
         <Cover src={song.bannerURL} />
       </div>
     </PageContainer>
