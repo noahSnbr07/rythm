@@ -1,31 +1,23 @@
-"use server";
-
-import fs from "fs/promises";
-import path from "path";
-import { fileURLToPath } from "url";
 import getColors from "get-image-colors";
-
-// Helper to get the directory name
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 export async function getDominantColor(url: string): Promise<string | null> {
   try {
     const fetchPath: string = `${process.env.NEXT_PUBLIC_BASE_URL}/${url}`;
 
-    // Fetch the image and save it locally
+    // Fetch the image
     const response = await fetch(fetchPath);
     console.log(`Fetching image from: ${fetchPath}`);
 
+    if (!response.ok) {
+      console.error("Failed to fetch the image.");
+      return null;
+    }
+
     const buffer = await response.arrayBuffer();
-    const tempFilePath = path.join(__dirname, "temp-image.jpg");
-    await fs.writeFile(tempFilePath, Buffer.from(buffer));
 
-    const colors = await getColors(tempFilePath);
+    // Use the buffer directly with getColors
+    const colors = await getColors(Buffer.from(buffer), "image/jpeg"); // Specify the format if needed
     const dominantColor = colors[0].hex("rgb");
-
-    // Cleanup the temp file
-    await fs.unlink(tempFilePath);
 
     console.log(`#################### \nDominant Color: ${dominantColor} \n####################`);
     return dominantColor;
