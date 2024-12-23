@@ -7,6 +7,7 @@ import useSong from "../hooks/use-song";
 import SongAssigner from "./components/song-assigner";
 import Cover from "./components/cover";
 import Header from "./components/header";
+import Controls from "./components/controls/controls";
 
 const ActualPage = () => {
   const searchParams = useSearchParams();
@@ -15,19 +16,16 @@ const ActualPage = () => {
   const { song, setSong } = useSong();
 
   return (
-    <PageContainer
-      priorityClassName="p-0"
-      hideOuter>
+    <PageContainer priorityClassName="p-0" hideOuter>
       <Header title={song.title} />
 
       {/* fetch song and assign it to global app context */}
       <SongAssigner id={id || ""} setSong={setSong} />
 
-
-      <div className="flex size-full flex-col gap-4 p-4">
-
+      <div className="flex size-full flex-col justify-between gap-4 p-4">
         <Cover src={song.bannerURL} />
 
+        <Controls />
       </div>
     </PageContainer>
   );
@@ -35,7 +33,14 @@ const ActualPage = () => {
 
 export default function Page() {
   return (
-    <Suspense fallback={<PageContainer hideOuter> <p> loading ... </p>  </PageContainer>}>
+    <Suspense
+      fallback={
+        <PageContainer hideOuter>
+          {" "}
+          <p> loading ... </p>{" "}
+        </PageContainer>
+      }
+    >
       <ActualPage />
     </Suspense>
   );

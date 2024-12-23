@@ -5,7 +5,7 @@ import React from "react";
 
 export default function Header({ title }: { title: string }) {
   return (
-    <div className="w-full p-4 bg-gradient-to-b from-black to-transparent opacity-75 flex justify-between items-center">
+    <div className="flex w-full items-center justify-between bg-gradient-to-b from-black to-transparent p-4 opacity-75">
       <Link href={`/home`}>
         <Image
           src={back}
@@ -17,9 +17,7 @@ export default function Header({ title }: { title: string }) {
         />
       </Link>
 
-      <p className="font-italic text-sm text-muted">
-        {title}
-      </p>
+      <p className="font-italic text-sm text-muted">{title}</p>
 
       <Image
         src={more}
@@ -29,7 +27,6 @@ export default function Header({ title }: { title: string }) {
         width={24}
         className="opacity-50"
       />
-
     </div>
   );
 }

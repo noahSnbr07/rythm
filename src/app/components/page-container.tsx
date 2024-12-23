@@ -44,7 +44,10 @@ export default function PageContainer({
   ];
 
   return (
-    <div style={customCSS} className="flex h-dvh flex-col transition-all duration-1000">
+    <div
+      style={customCSS}
+      className="flex h-dvh flex-col transition-all duration-1000"
+    >
       {!hideOuter && (
         <header className="flex gap-2 bg-stack p-2">
           <>

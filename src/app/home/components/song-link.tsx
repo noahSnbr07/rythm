@@ -6,8 +6,8 @@ import Link from "next/link";
 import React from "react";
 
 export default async function SongLink({ song }: { song: Song }) {
-
-  const missingSource: boolean = !song || !song.bannerURL || song.bannerURL.length < 1
+  const missingSource: boolean =
+    !song || !song.bannerURL || song.bannerURL.length < 1;
 
   if (missingSource) return <></>;
 
