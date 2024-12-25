@@ -18,7 +18,9 @@ export default async function page() {
   debug(`Postgres SQL: ${songs.status}`);
 
   return (
-    <PageContainer>
+    <PageContainer
+      customHeaderJSX={<h1 className="font-bold text-xl text-muted"> Home </h1>}
+    >
       <Header />
       <SongList songs={songs.data as Song[]} />
     </PageContainer>

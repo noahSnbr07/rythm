@@ -26,6 +26,7 @@ export default function HeaderInput({
   return (
     <div className="flex flex-1 gap-2 rounded-lg">
       <input
+        autoFocus
         value={value}
         onChange={(event: ChangeEvent<HTMLInputElement>) =>
           setValue(event.target.value)

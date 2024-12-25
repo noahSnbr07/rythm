@@ -19,7 +19,7 @@ export default function PublishButton({
     setPending(true);
     let successful: boolean = true;
     try {
-      const newSong = await getYouTubeMetaData(song.videoID);
+      const newSong = await getYouTubeMetaData(song.videoID, song);
 
       //exit if un scraped song
       if (!newSong) redirect("/upload/find");
@@ -33,12 +33,13 @@ export default function PublishButton({
       }
     } finally {
       setPending(false);
-      redirect(`/upload/verify?success=${String(successful)}`);
+      redirect(`/upload/verify?success=${String(successful)})}`);
     }
   }
 
   return (
     <button
+      disabled={pending}
       onClick={attemptUpload}
       className="w-full rounded-lg bg-accent p-4 font-bold text-xl"
     >

@@ -5,6 +5,7 @@ import getYouTubeDownloadURL from "./get-youtube-download-url";
 
 export default async function getYouTubeMetaData(
   videoID: string,
+  song: Song,
 ): Promise<Song> {
   if (!videoID) throw new Error("videoID parameter missing");
 
@@ -37,11 +38,11 @@ export default async function getYouTubeMetaData(
     return {
       id: "",
       videoID: result.id,
-      title: snippet.title,
+      title: song.title,
       explicit: false,
       audioURL: downloadURL,
       bannerURL: thumbnail,
-      artist: snippet.channelTitle,
+      artist: song.artist,
       release: snippet.publishedAt,
       duration: contentDetails.duration,
       views: Number(statistics.viewCount || 0),

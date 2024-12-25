@@ -49,7 +49,7 @@ export default function PageContainer({
       className="flex h-dvh flex-col transition-all duration-1000"
     >
       {!hideOuter && (
-        <header className="flex gap-2 bg-stack p-2">
+        <header className="flex items-center gap-2 bg-stack p-2">
           <>
             <Link href={"/"}>
               <Image
@@ -58,7 +58,7 @@ export default function PageContainer({
                 width={32}
                 title="Logo"
                 alt="Logo"
-                className="h-full"
+                className="h-full rounded-lg"
               />
             </Link>
           </>

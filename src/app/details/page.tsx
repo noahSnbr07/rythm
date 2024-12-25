@@ -36,8 +36,7 @@ export default function Page() {
     <Suspense
       fallback={
         <PageContainer hideOuter>
-          {" "}
-          <p> loading ... </p>{" "}
+          <p> loading ... </p>
         </PageContainer>
       }
     >

@@ -1,4 +1,4 @@
-import { prev, next } from "@/assets/assets";
+import { prev, next, play } from "@/assets/assets";
 import Image from "next/image";
 import React from "react";
 
@@ -18,7 +18,7 @@ export default function Buttons() {
 
       <button className="rounded-full bg-muted p-4">
         <Image
-          src={next}
+          src={play}
           alt="Skip Prev"
           title="Skip Next"
           priority
