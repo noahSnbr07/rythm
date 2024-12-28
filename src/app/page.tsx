@@ -36,7 +36,10 @@ export default function page(): JSX.Element {
         </Link>
       </div>
 
-      <p className="font-italic text-xl text-muted"> Noah 💯 </p>
+      <Link
+        target="_blank"
+        href={`https://www.instagram.com/noahsnbr/`}
+        className="font-italic text-xl text-muted"> Noah 💯 </Link>
     </div>
   );
 }

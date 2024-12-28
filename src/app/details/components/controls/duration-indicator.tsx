@@ -1,6 +1,11 @@
+import usePlayer from "@/app/hooks/use-player";
 import React from "react";
 
 export default function DurationIndicator() {
+
+
+  const { player } = usePlayer();
+
   return (
     <div className="flex w-full flex-col gap-2">
       <input
@@ -11,8 +16,8 @@ export default function DurationIndicator() {
         value={33}
       />
       <div className="flex w-full justify-between">
-        <span> 00:00 </span>
-        <span> 03:00 </span>
+        <span> {player.progress} </span>
+        <span> {player.duration} </span>
       </div>
     </div>
   );
