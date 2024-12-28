@@ -18,7 +18,7 @@ export default function page(): JSX.Element {
           width={128}
           className="rounded-full shadow-2xl brightness-150 drop-shadow-lg"
         />
-        <div className="absolute bottom-2 right-2 h-6 w-6 animate-ping rounded-full border-4 border-background bg-orange-500"></div>
+        <div className="absolute bottom-2 right-2 size-6 animate-ping rounded-full border-4 border-background bg-orange-500"></div>
       </div>
 
       <div className="flex flex-col items-center justify-center gap-2">
@@ -39,7 +39,11 @@ export default function page(): JSX.Element {
       <Link
         target="_blank"
         href={`https://www.instagram.com/noahsnbr/`}
-        className="font-italic text-xl text-muted"> Noah 💯 </Link>
+        className="font-italic text-xl text-muted"
+      >
+        {" "}
+        Noah 💯{" "}
+      </Link>
     </div>
   );
 }

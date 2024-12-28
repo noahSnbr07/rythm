@@ -11,9 +11,7 @@ export default function SongAssigner({
   id: string;
   setSong: Dispatch<SetStateAction<Song>>;
 }) {
-
-
-  const { player, setPlayer } = usePlayer();
+  const { setPlayer } = usePlayer();
 
   React.useEffect(
     function (): void {
@@ -23,12 +21,12 @@ export default function SongAssigner({
         const song: Song = await getSongById(id ? id : "");
         if (!song) console.error("error occurred during fetching");
         setSong(song);
-        setPlayer((prev: Player) => ({ ...prev, duration: song.duration }))
+        setPlayer((prev: Player) => ({ ...prev, duration: song.duration }));
       }
 
       fetchSong();
     },
-    [id, setSong],
+    [id, setSong, setPlayer],
   );
 
   return <></>;

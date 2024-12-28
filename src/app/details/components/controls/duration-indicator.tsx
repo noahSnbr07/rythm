@@ -2,8 +2,6 @@ import usePlayer from "@/app/hooks/use-player";
 import React from "react";
 
 export default function DurationIndicator() {
-
-
   const { player } = usePlayer();
 
   return (

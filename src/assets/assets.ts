@@ -11,7 +11,6 @@ import pause from "../assets/svg/pause.svg";
 import next from "../assets/svg/next.svg";
 import prev from "../assets/svg/prev.svg";
 
-
 import image from "../assets/svg/image.svg";
 
 export {
