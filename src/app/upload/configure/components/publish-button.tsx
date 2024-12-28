@@ -33,7 +33,7 @@ export default function PublishButton({
       }
     } finally {
       setPending(false);
-      redirect(`/upload/verify?success=${String(successful)})}`);
+      redirect(`/upload/verify?success=${String(successful)}`);
     }
   }
 
