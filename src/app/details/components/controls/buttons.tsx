@@ -1,8 +1,12 @@
-import { prev, next, play } from "@/assets/assets";
+import usePlayer from "@/app/hooks/use-player";
+import { prev, next, play, pause } from "@/assets/assets";
 import Image from "next/image";
 import React from "react";
 
 export default function Buttons() {
+
+  const { player } = usePlayer();
+
   return (
     <div className="flex w-full items-center justify-evenly">
       <button className="grid aspect-square h-12 place-content-center rounded-full bg-stack p-2">
@@ -16,9 +20,11 @@ export default function Buttons() {
         />
       </button>
 
-      <button className="rounded-full bg-muted p-4">
+      <button
+        onClick={(): void => { player.togglePlayer() }}
+        className="rounded-full bg-muted p-4">
         <Image
-          src={play}
+          src={player.playing ? pause : play}
           alt="Skip Prev"
           title="Skip Next"
           priority

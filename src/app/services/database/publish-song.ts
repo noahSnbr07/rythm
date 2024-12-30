@@ -12,8 +12,8 @@ export default async function publishSong(song: Song): Promise<string> {
     if (!song.audioURL || song.audioURL.length < 1)
       throw new Error("Invalid audioURL format.");
 
-    console.log("Fetching audio file from:", song.audioURL);
     const response: Response = await fetch(song.audioURL);
+
     if (!response.ok)
       throw new Error(`Failed to download song from ${song.audioURL}`);
 
